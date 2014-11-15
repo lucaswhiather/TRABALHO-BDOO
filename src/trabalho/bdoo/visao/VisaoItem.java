@@ -32,7 +32,7 @@ public class VisaoItem extends javax.swing.JFrame {
         jLblNome = new javax.swing.JLabel();
         jTxtNome = new javax.swing.JTextField();
         jTxtPreco = new javax.swing.JTextField();
-        jLblPreco = new javax.swing.JLabel();
+        jLbPreco = new javax.swing.JLabel();
         jBtnCadastrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
@@ -71,9 +71,9 @@ public class VisaoItem extends javax.swing.JFrame {
         jTxtPreco.setForeground(new java.awt.Color(255, 255, 255));
         jTxtPreco.setCaretColor(new java.awt.Color(255, 255, 255));
 
-        jLblPreco.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLblPreco.setForeground(new java.awt.Color(255, 255, 255));
-        jLblPreco.setText("Preço:");
+        jLbPreco.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLbPreco.setForeground(new java.awt.Color(255, 255, 255));
+        jLbPreco.setText("Preço:");
 
         jBtnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
         jBtnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -91,9 +91,9 @@ public class VisaoItem extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLblPreco)
+                        .addComponent(jLbPreco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -108,7 +108,7 @@ public class VisaoItem extends javax.swing.JFrame {
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLblPreco)
+                    .addComponent(jLbPreco)
                     .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jBtnCadastrar))
@@ -195,17 +195,17 @@ public class VisaoItem extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBtnFiltrar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGap(4, 4, 4)
                         .addComponent(jLblNomeFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtNomeFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jTxtNomeFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLblPrecoFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtPrecoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTxtPrecoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnFiltrar)))
                 .addGap(5, 5, 5))
         );
         jPanel5Layout.setVerticalGroup(
@@ -233,7 +233,7 @@ public class VisaoItem extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jBtnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17))
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -334,9 +334,9 @@ public class VisaoItem extends javax.swing.JFrame {
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnFiltrar;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLbPreco;
     private javax.swing.JLabel jLblNome;
     private javax.swing.JLabel jLblNomeFiltro;
-    private javax.swing.JLabel jLblPreco;
     private javax.swing.JLabel jLblPrecoFiltro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
