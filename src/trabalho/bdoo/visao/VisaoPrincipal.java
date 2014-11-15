@@ -18,7 +18,7 @@ public class VisaoPrincipal extends javax.swing.JFrame {
      */
     public VisaoPrincipal() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 

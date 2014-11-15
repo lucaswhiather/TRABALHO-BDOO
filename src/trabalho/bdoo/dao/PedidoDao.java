@@ -6,6 +6,8 @@
 
 package trabalho.bdoo.dao;
 
+import java.util.List;
+import trabalho.bdoo.modelo.Cliente;
 import trabalho.bdoo.modelo.Pedido;
 
 /**
@@ -13,5 +15,7 @@ import trabalho.bdoo.modelo.Pedido;
  * @author Lucas Whiather
  */
 public class PedidoDao extends GenericDao<Pedido>{
-    
+    public List<Pedido> buscarTodos(Cliente cliente){
+       return null; 
+    }
 }

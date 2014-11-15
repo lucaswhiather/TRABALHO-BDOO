@@ -6,6 +6,8 @@
 
 package trabalho.bdoo;
 
+import trabalho.bdoo.controle.ControladorPrincipal;
+
 /**
  *
  * @author Lucas Whiather
@@ -16,7 +18,7 @@ public class TrabalhoBDOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new ControladorPrincipal().iniciar();
     }
     
 }

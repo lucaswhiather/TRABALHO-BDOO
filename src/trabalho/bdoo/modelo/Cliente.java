@@ -14,19 +14,10 @@ import java.io.Serializable;
  */
 public class Cliente implements Serializable{
 
-    Integer id;
     String nome;
     Integer telefone;
     
     public Cliente() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -44,7 +35,6 @@ public class Cliente implements Serializable{
     public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
-    
     
     
 }

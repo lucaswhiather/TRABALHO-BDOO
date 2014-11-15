@@ -18,11 +18,17 @@ public class GenericDao<T> {
     protected ObjectContainer db;
 
     public GenericDao() {
+        db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "BDOO.yap");
     }
 
     protected void conectar() throws Exception {
-        db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "BDOO.yap");
     }
+    
+    protected void desconectar() throws Exception {
+        db.commit();
+        db.close();
+    }
+    
 
     public void salvar(T object) throws Exception {
         conectar();
@@ -30,6 +36,15 @@ public class GenericDao<T> {
     }
 
     public void excluir(T object) throws Exception {
+        conectar();
         db.delete(object);
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        desconectar();
+        super.finalize(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
