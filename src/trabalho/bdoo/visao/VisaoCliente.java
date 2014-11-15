@@ -387,4 +387,8 @@ public class VisaoCliente extends javax.swing.JFrame {
         return jTxtTelefone;
     }
 
+    public javax.swing.JScrollPane getjScrollCliente() {
+        return jScrollCliente;
+    }
+
 }
