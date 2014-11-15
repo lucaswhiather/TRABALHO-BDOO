@@ -7,6 +7,7 @@
 package trabalho.bdoo.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.io.Serializable;
 public class Pedido implements Serializable{
     private Integer id;
     private Cliente cliente;
+    private List<ItemPedido> itenspedido;
     
     public Pedido() {
     }
