@@ -519,11 +519,11 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLblItemFiltro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTxtItemFiltro" min="-2" pref="162" max="-2" attributes="0"/>
+                                  <Component id="jTxtClienteFiltro" min="-2" pref="162" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLblPrecoFiltro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTxtPrecoFiltro" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="jTxtTotalFiltro" min="-2" pref="134" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -538,9 +538,9 @@
                           <EmptySpace pref="11" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLblItemFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTxtItemFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTxtClienteFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLblPrecoFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTxtPrecoFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTxtTotalFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -564,10 +564,10 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Item:"/>
+                    <Property name="text" type="java.lang.String" value="Cliente"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTxtItemFiltro">
+                <Component class="javax.swing.JTextField" name="jTxtClienteFiltro">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLblPrecoFiltro">
                   <Properties>
@@ -577,10 +577,10 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+                    <Property name="text" type="java.lang.String" value="Total"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTxtPrecoFiltro">
+                <Component class="javax.swing.JTextField" name="jTxtTotalFiltro">
                 </Component>
               </SubComponents>
             </Container>

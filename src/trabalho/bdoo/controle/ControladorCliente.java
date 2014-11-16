@@ -38,6 +38,7 @@ public class ControladorCliente implements ActionListener {
 
         //BOTÕES
         visaoCliente.getjBtnCadastrar().addActionListener(this);
+        visaoCliente.getjBtnNovo().addActionListener(this);
         visaoCliente.getjBtnEditar().addActionListener(this);
         visaoCliente.getjBtnExcluir().addActionListener(this);
         visaoCliente.getjBtnFiltrar().addActionListener(this);
@@ -54,9 +55,15 @@ public class ControladorCliente implements ActionListener {
             editar();
         }else if (e.getSource().equals(visaoCliente.getjBtnFiltrar())) {
             listar();
+        }else if (e.getSource().equals(visaoCliente.getjBtnNovo())) {
+            novo();
         }
         
 
+    }
+    
+    public void novo(){
+        cliente = new Cliente();
     }
 
     private void salvar() {

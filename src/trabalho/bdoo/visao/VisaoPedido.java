@@ -11,8 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import trabalho.bdoo.modelo.Cliente;
 import trabalho.bdoo.modelo.Item;
+import trabalho.bdoo.modelo.ItemPedido;
 import trabalho.bdoo.modelo.Pedido;
 
 /**
@@ -58,9 +60,9 @@ public class VisaoPedido extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jBtnFiltrar = new javax.swing.JButton();
         jLblItemFiltro = new javax.swing.JLabel();
-        jTxtItemFiltro = new javax.swing.JTextField();
+        jTxtClienteFiltro = new javax.swing.JTextField();
         jLblPrecoFiltro = new javax.swing.JLabel();
-        jTxtPrecoFiltro = new javax.swing.JTextField();
+        jTxtTotalFiltro = new javax.swing.JTextField();
         jBtnEditar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
 
@@ -222,11 +224,11 @@ public class VisaoPedido extends javax.swing.JFrame {
 
         jLblItemFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLblItemFiltro.setForeground(new java.awt.Color(255, 255, 255));
-        jLblItemFiltro.setText("Item:");
+        jLblItemFiltro.setText("Cliente");
 
         jLblPrecoFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLblPrecoFiltro.setForeground(new java.awt.Color(255, 255, 255));
-        jLblPrecoFiltro.setText("Preço:");
+        jLblPrecoFiltro.setText("Total");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -241,11 +243,11 @@ public class VisaoPedido extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLblItemFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtItemFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtClienteFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLblPrecoFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtPrecoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtTotalFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -256,9 +258,9 @@ public class VisaoPedido extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblItemFiltro)
-                    .addComponent(jTxtItemFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtClienteFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblPrecoFiltro)
-                    .addComponent(jTxtPrecoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTotalFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -368,42 +370,80 @@ public class VisaoPedido extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollItem;
     private javax.swing.JTable jTableItem;
     private javax.swing.JTable jTablePedido;
-    private javax.swing.JTextField jTxtItemFiltro;
-    private javax.swing.JTextField jTxtPrecoFiltro;
+    private javax.swing.JTextField jTxtClienteFiltro;
+    private javax.swing.JTextField jTxtTotalFiltro;
     // End of variables declaration//GEN-END:variables
 
     public void apresentarMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
-    
-    public void setPedido(Pedido pedido) {
-        if (pedido == null) {
 
-        } else {
-
-        }
-    }
-    
-    public void listarCliente(List<Cliente> lista){
+    public void listarCliente(List<Cliente> lista) {
         jCmbBoxCliente.removeAllItems();
-        
-        for(Cliente c: lista){
+
+        for (Cliente c : lista) {
             jCmbBoxCliente.addItem(c);
         }
     }
 
-    public void listarItem(List<Item> lista){
+    public void listarItem(List<Item> lista) {
         jCmbBoxItem.removeAllItems();
-        
-        for(Item i: lista){
+
+        for (Item i : lista) {
             jCmbBoxItem.addItem(i);
+        }
+    }
+
+    public void listarItemPedido(List<ItemPedido> lista) {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTableItem.getModel();
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
+        int cont = 0;
+
+        for (ItemPedido ip : lista) {
+            modelo.insertRow(cont++, new Object[]{ip.getItem().getNome(), ip.getItem().getPreco()});
+        }
+    }
+
+    public void listarPedido(List<Pedido> lista) {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTablePedido.getModel();
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
+        int cont = 0;
+
+        for (Pedido p : lista) {
+            modelo.insertRow(cont++, new Object[]{p.getCliente().getNome(), p.getTotal()});
+        }
+    }
+
+    public String getFiltroCliente() {
+        if (jTxtClienteFiltro.getText().equals("")) {
+            return null;
+        } else {
+            return jTxtClienteFiltro.getText();
+        }
+    }
+
+    public Double getFiltroTotal() {
+        if (jTxtTotalFiltro.getText().equals("")) {
+            return null;
+        } else {
+            return Double.parseDouble(jTxtTotalFiltro.getText());
         }
     }
 
     public JButton getjBtnAdicionarItem() {
         return jBtnAdicionarItem;
     }
-    
+
     public javax.swing.JButton getjBtnFiltrar() {
         return jBtnFiltrar;
     }
@@ -419,13 +459,13 @@ public class VisaoPedido extends javax.swing.JFrame {
     public javax.swing.JScrollPane getjScrollItem() {
         return jScrollItem;
     }
-  
+
     public javax.swing.JTextField getjTxtItemFiltro() {
-        return jTxtItemFiltro;
+        return jTxtClienteFiltro;
     }
 
     public javax.swing.JTextField getjTxtPrecoFiltro() {
-        return jTxtPrecoFiltro;
+        return jTxtTotalFiltro;
     }
 
     public JButton getjBtnCadastrar() {
@@ -459,7 +499,5 @@ public class VisaoPedido extends javax.swing.JFrame {
     public JScrollPane getjScrollCliente() {
         return jScrollCliente;
     }
-    
-    
 
 }
