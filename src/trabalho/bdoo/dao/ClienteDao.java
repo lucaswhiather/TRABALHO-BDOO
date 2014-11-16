@@ -5,6 +5,7 @@
  */
 package trabalho.bdoo.dao;
 
+import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 import com.db4o.query.Query;
@@ -19,17 +20,19 @@ import trabalho.bdoo.modelo.Cliente;
  */
 public class ClienteDao extends GenericDao<Cliente> {
 
+    public ClienteDao(ObjectContainer db) {
+        this.db = db;
+    }
+
     public List<Cliente> buscarTodos(final String nome, final Integer telefone) throws Exception {
-        conectar();
-        System.out.println("YTER");
         ObjectSet<Cliente> lista = db.query(new Predicate<Cliente>() {
-            
+
             public boolean match(Cliente cliente) {
-           
+
                 if (nome != null && !cliente.getNome().startsWith(nome)) {
                     return false;
                 }
-                
+
                 if (telefone != null && !cliente.getTelefone().equals(telefone)) {
                     return false;
                 }

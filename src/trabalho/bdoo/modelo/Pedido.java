@@ -14,19 +14,11 @@ import java.util.List;
  * @author Lucas Whiather
  */
 public class Pedido implements Serializable{
-    private Integer id;
+
     private Cliente cliente;
     private List<ItemPedido> itenspedido;
     
     public Pedido() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Cliente getCliente() {
@@ -36,7 +28,25 @@ public class Pedido implements Serializable{
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public List<ItemPedido> getItenspedido() {
+        return itenspedido;
+    }
+
+    public void setItenspedido(List<ItemPedido> itenspedido) {
+        this.itenspedido = itenspedido;
+    }
     
+    public Double getTotal(){
+        Double soma = 0.0;
+        
+        if(itenspedido==null) return soma;
+        
+        for(ItemPedido it: itenspedido){
+            soma += it.getItem().getPreco();
+        }
+        return soma;
+    }
     
-    
+      
 }

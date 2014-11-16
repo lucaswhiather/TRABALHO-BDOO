@@ -18,33 +18,36 @@ public class GenericDao<T> {
     protected ObjectContainer db;
 
     public GenericDao() {
+
+    }
+
+    public GenericDao(ObjectContainer db) {
+        this.db = db.ext().openSession();
+    }
+
+    public void criarConexao() {
         db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "BDOO.yap");
     }
 
-    protected void conectar() throws Exception {
-    }
-    
-    protected void desconectar() throws Exception {
-        db.commit();
-        db.close();
-    }
-    
-
-    public void salvar(T object) throws Exception {
-        conectar();
+    public void salvar(T object) throws Exception {        
         db.store(object);
+        db.commit();
     }
 
     public void excluir(T object) throws Exception {
-        conectar();
         db.delete(object);
+        db.commit();
+    }
+
+    public ObjectContainer getDb() {
+        return db;
     }
 
     @Override
     protected void finalize() throws Throwable {
-        desconectar();
+        db.commit();
+        db.close();
         super.finalize(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

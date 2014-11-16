@@ -40,7 +40,7 @@ public class VisaoCliente extends javax.swing.JFrame {
     public void getCliente(Cliente cliente) {
 
         String nome = jTxtNome.getText().equals("") ? null : jTxtNome.getText();
-        Integer telefone = jTxtTelefone.equals("") ? null : Integer.parseInt(jTxtTelefone.getText());
+        Integer telefone = jTxtTelefone.getText().equals("") ? null : Integer.parseInt(jTxtTelefone.getText());
 
         cliente.setNome(nome);
         cliente.setTelefone(telefone);

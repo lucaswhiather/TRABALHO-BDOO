@@ -5,6 +5,16 @@
  */
 package trabalho.bdoo.visao;
 
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import trabalho.bdoo.modelo.Cliente;
+import trabalho.bdoo.modelo.Item;
+import trabalho.bdoo.modelo.Pedido;
+
 /**
  *
  * @author Dú Máximo
@@ -16,6 +26,7 @@ public class VisaoPedido extends javax.swing.JFrame {
      */
     public VisaoPedido() {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -30,26 +41,30 @@ public class VisaoPedido extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLblCliente = new javax.swing.JLabel();
-        jTxtTelefone = new javax.swing.JTextField();
-        jLbTelefone = new javax.swing.JLabel();
         jCmbBoxCliente = new javax.swing.JComboBox();
         jScrollCliente = new javax.swing.JScrollPane();
-        jTableCliente = new javax.swing.JTable();
+        jTableItem = new javax.swing.JTable();
         jBtnRemover = new javax.swing.JButton();
+        jLblItem = new javax.swing.JLabel();
+        jCmbBoxItem = new javax.swing.JComboBox();
+        jBtnCadastrar = new javax.swing.JButton();
+        jBtnNovo = new javax.swing.JButton();
+        jBtnAdicionarItem = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollItem = new javax.swing.JScrollPane();
-        jTableItem = new javax.swing.JTable();
-        jBtnAdicionar = new javax.swing.JButton();
+        jTablePedido = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jBtnFiltrar = new javax.swing.JButton();
         jLblItemFiltro = new javax.swing.JLabel();
         jTxtItemFiltro = new javax.swing.JTextField();
         jLblPrecoFiltro = new javax.swing.JLabel();
         jTxtPrecoFiltro = new javax.swing.JTextField();
+        jBtnEditar = new javax.swing.JButton();
+        jBtnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -62,86 +77,92 @@ public class VisaoPedido extends javax.swing.JFrame {
         jLblCliente.setForeground(new java.awt.Color(255, 255, 255));
         jLblCliente.setText("Cliente:");
 
-        jTxtTelefone.setEditable(false);
-        jTxtTelefone.setBackground(new java.awt.Color(51, 51, 51));
-        jTxtTelefone.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTxtTelefone.setForeground(new java.awt.Color(255, 255, 255));
-        jTxtTelefone.setCaretColor(new java.awt.Color(255, 255, 255));
-
-        jLbTelefone.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLbTelefone.setForeground(new java.awt.Color(255, 255, 255));
-        jLbTelefone.setText("Telefone:");
-
         jCmbBoxCliente.setBackground(new java.awt.Color(0, 0, 0));
         jCmbBoxCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jCmbBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTableCliente.setBackground(new java.awt.Color(102, 102, 102));
-        jTableCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
-        jTableCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTableCliente.setForeground(new java.awt.Color(255, 255, 255));
-        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
+        jTableItem.setBackground(new java.awt.Color(102, 102, 102));
+        jTableItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
+        jTableItem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTableItem.setForeground(new java.awt.Color(255, 255, 255));
+        jTableItem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Item", "Preço"
             }
         ));
-        jTableCliente.setToolTipText("");
-        jTableCliente.setGridColor(new java.awt.Color(0, 0, 0));
-        jTableCliente.getTableHeader().setResizingAllowed(false);
-        jTableCliente.getTableHeader().setReorderingAllowed(false);
-        jScrollCliente.setViewportView(jTableCliente);
+        jTableItem.setToolTipText("");
+        jTableItem.setGridColor(new java.awt.Color(0, 0, 0));
+        jTableItem.getTableHeader().setResizingAllowed(false);
+        jTableItem.getTableHeader().setReorderingAllowed(false);
+        jScrollCliente.setViewportView(jTableItem);
 
         jBtnRemover.setBackground(new java.awt.Color(0, 0, 0));
         jBtnRemover.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtnRemover.setText("Remover");
+
+        jLblItem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLblItem.setForeground(new java.awt.Color(255, 255, 255));
+        jLblItem.setText("Item:");
+
+        jCmbBoxItem.setBackground(new java.awt.Color(0, 0, 0));
+        jCmbBoxItem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jBtnCadastrar.setText("Salvar");
+
+        jBtnNovo.setText("Novo Cadastro");
+
+        jBtnAdicionarItem.setText("Adicionar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jBtnCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBtnNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLbTelefone)
-                                    .addComponent(jLblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jCmbBoxCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jCmbBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jBtnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 40, Short.MAX_VALUE)))
+                                .addComponent(jLblItem, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCmbBoxItem, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBtnAdicionarItem)))
+                        .addGap(0, 89, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCmbBoxCliente))
-                .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLbTelefone)
-                    .addComponent(jTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jCmbBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCmbBoxItem, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnAdicionarItem))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jBtnCadastrar)
+                    .addComponent(jBtnNovo)))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -175,30 +196,23 @@ public class VisaoPedido extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
 
-        jTableItem.setBackground(new java.awt.Color(102, 102, 102));
-        jTableItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
-        jTableItem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTableItem.setForeground(new java.awt.Color(255, 255, 255));
-        jTableItem.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePedido.setBackground(new java.awt.Color(102, 102, 102));
+        jTablePedido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
+        jTablePedido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTablePedido.setForeground(new java.awt.Color(255, 255, 255));
+        jTablePedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Item", "Preço"
+                "Cliente", "Total"
             }
         ));
-        jTableItem.setToolTipText("");
-        jTableItem.setGridColor(new java.awt.Color(0, 0, 0));
-        jTableItem.getTableHeader().setResizingAllowed(false);
-        jTableItem.getTableHeader().setReorderingAllowed(false);
-        jScrollItem.setViewportView(jTableItem);
-
-        jBtnAdicionar.setBackground(new java.awt.Color(0, 0, 0));
-        jBtnAdicionar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jBtnAdicionar.setText("Adicionar");
+        jTablePedido.setToolTipText("");
+        jTablePedido.setGridColor(new java.awt.Color(0, 0, 0));
+        jTablePedido.getTableHeader().setResizingAllowed(false);
+        jTablePedido.getTableHeader().setReorderingAllowed(false);
+        jScrollItem.setViewportView(jTablePedido);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Filtro de Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.white));
@@ -248,6 +262,10 @@ public class VisaoPedido extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jBtnEditar.setText("Editar");
+
+        jBtnExcluir.setText("Excluir");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -256,12 +274,13 @@ public class VisaoPedido extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollItem, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jBtnEditar)
+                        .addGap(152, 152, 152)
+                        .addComponent(jBtnExcluir)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +288,11 @@ public class VisaoPedido extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollItem, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnEditar)
+                    .addComponent(jBtnExcluir))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -304,7 +325,10 @@ public class VisaoPedido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,47 +343,20 @@ public class VisaoPedido extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisaoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisaoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisaoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisaoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisaoPedido().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAdicionar;
+    private javax.swing.JButton jBtnAdicionarItem;
+    private javax.swing.JButton jBtnCadastrar;
+    private javax.swing.JButton jBtnEditar;
+    private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnFiltrar;
+    private javax.swing.JButton jBtnNovo;
     private javax.swing.JButton jBtnRemover;
     private javax.swing.JComboBox jCmbBoxCliente;
+    private javax.swing.JComboBox jCmbBoxItem;
     private javax.swing.JLabel jLabelTitulo;
-    private javax.swing.JLabel jLbTelefone;
     private javax.swing.JLabel jLblCliente;
+    private javax.swing.JLabel jLblItem;
     private javax.swing.JLabel jLblItemFiltro;
     private javax.swing.JLabel jLblPrecoFiltro;
     private javax.swing.JPanel jPanel1;
@@ -369,17 +366,44 @@ public class VisaoPedido extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollCliente;
     private javax.swing.JScrollPane jScrollItem;
-    private javax.swing.JTable jTableCliente;
     private javax.swing.JTable jTableItem;
+    private javax.swing.JTable jTablePedido;
     private javax.swing.JTextField jTxtItemFiltro;
     private javax.swing.JTextField jTxtPrecoFiltro;
-    private javax.swing.JTextField jTxtTelefone;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JButton getjBtnAdicionar() {
-        return jBtnAdicionar;
+    public void apresentarMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+    
+    public void setPedido(Pedido pedido) {
+        if (pedido == null) {
+
+        } else {
+
+        }
+    }
+    
+    public void listarCliente(List<Cliente> lista){
+        jCmbBoxCliente.removeAllItems();
+        
+        for(Cliente c: lista){
+            jCmbBoxCliente.addItem(c);
+        }
     }
 
+    public void listarItem(List<Item> lista){
+        jCmbBoxItem.removeAllItems();
+        
+        for(Item i: lista){
+            jCmbBoxItem.addItem(i);
+        }
+    }
+
+    public JButton getjBtnAdicionarItem() {
+        return jBtnAdicionarItem;
+    }
+    
     public javax.swing.JButton getjBtnFiltrar() {
         return jBtnFiltrar;
     }
@@ -395,15 +419,7 @@ public class VisaoPedido extends javax.swing.JFrame {
     public javax.swing.JScrollPane getjScrollItem() {
         return jScrollItem;
     }
-
-    public javax.swing.JTable getjTableCliente() {
-        return jTableCliente;
-    }
-
-    public javax.swing.JTable getjTableItem() {
-        return jTableItem;
-    }
-
+  
     public javax.swing.JTextField getjTxtItemFiltro() {
         return jTxtItemFiltro;
     }
@@ -412,7 +428,38 @@ public class VisaoPedido extends javax.swing.JFrame {
         return jTxtPrecoFiltro;
     }
 
-    public javax.swing.JTextField getjTxtTelefone() {
-        return jTxtTelefone;
+    public JButton getjBtnCadastrar() {
+        return jBtnCadastrar;
     }
+
+    public JButton getjBtnNovo() {
+        return jBtnNovo;
+    }
+
+    public JButton getjBtnEditar() {
+        return jBtnEditar;
+    }
+
+    public JButton getjBtnExcluir() {
+        return jBtnExcluir;
+    }
+
+    public JTable getjTableItem() {
+        return jTableItem;
+    }
+
+    public JTable getjTablePedido() {
+        return jTablePedido;
+    }
+
+    public JComboBox getjCmbBoxItem() {
+        return jCmbBoxItem;
+    }
+
+    public JScrollPane getjScrollCliente() {
+        return jScrollCliente;
+    }
+    
+    
+
 }

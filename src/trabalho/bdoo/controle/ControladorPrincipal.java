@@ -6,8 +6,10 @@
 
 package trabalho.bdoo.controle;
 
+import com.db4o.ObjectContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import trabalho.bdoo.dao.GenericDao;
 import trabalho.bdoo.visao.VisaoPrincipal;
 
 /**
@@ -16,13 +18,16 @@ import trabalho.bdoo.visao.VisaoPrincipal;
  */
 public class ControladorPrincipal implements ActionListener{
 
-    VisaoPrincipal visaoPrincipal;
+    private VisaoPrincipal visaoPrincipal;
+    private GenericDao genericDao;
     
     public ControladorPrincipal() {
     }
 
     public void iniciar(){
         visaoPrincipal = new VisaoPrincipal();
+        genericDao = new GenericDao();
+        genericDao.criarConexao();
         
         //BOTÕES
         visaoPrincipal.getjBtnCliente().addActionListener(this);
@@ -33,11 +38,11 @@ public class ControladorPrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(visaoPrincipal.getjBtnCliente())){
-            new ControladorCliente().iniciar();
+            new ControladorCliente().iniciar(genericDao.getDb());
         }else if(e.getSource().equals(visaoPrincipal.getjBtnItem())){
-            //new ControladorItem().inicar();
+            new ControladorItem().iniciar(genericDao.getDb());
         }else if(e.getSource().equals(visaoPrincipal.getjBtnPedido())){
-            //new ControladorPedido().inicar();
+            new ControladorPedido().iniciar(genericDao.getDb());
         }
     }
     

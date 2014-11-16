@@ -5,6 +5,7 @@
  */
 package trabalho.bdoo.controle;
 
+import com.db4o.ObjectContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -28,11 +29,11 @@ public class ControladorCliente implements ActionListener {
     public ControladorCliente() {
     }
 
-    public void iniciar() {
+    public void iniciar(ObjectContainer db) {
 
         visaoCliente = new VisaoCliente();
         cliente = new Cliente();
-        clienteDao = new ClienteDao();
+        clienteDao = new ClienteDao(db);
         listar();
 
         //BOTÕES

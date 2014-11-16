@@ -13,19 +13,11 @@ import java.io.Serializable;
  * @author Lucas Whiather
  */
 public class ItemPedido implements Serializable{
-    Integer id;
-    Item item;
-    Pedido pedido;
+    
+    private Item item;
+    private Pedido pedido;
 
     public ItemPedido() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Item getItem() {

@@ -5,6 +5,13 @@
  */
 package trabalho.bdoo.visao;
 
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import trabalho.bdoo.modelo.Cliente;
+import trabalho.bdoo.modelo.Item;
+
 /**
  *
  * @author Dú Máximo
@@ -16,6 +23,11 @@ public class VisaoItem extends javax.swing.JFrame {
      */
     public VisaoItem() {
         initComponents();
+        setVisible(true);
+    }
+
+    public void apresentarMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 
     /**
@@ -33,6 +45,7 @@ public class VisaoItem extends javax.swing.JFrame {
         jTxtNome = new javax.swing.JTextField();
         jTxtPreco = new javax.swing.JTextField();
         jLbPreco = new javax.swing.JLabel();
+        jBtnNovo = new javax.swing.JButton();
         jBtnCadastrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
@@ -48,7 +61,7 @@ public class VisaoItem extends javax.swing.JFrame {
         jLblPrecoFiltro = new javax.swing.JLabel();
         jTxtPrecoFiltro = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -75,9 +88,13 @@ public class VisaoItem extends javax.swing.JFrame {
         jLbPreco.setForeground(new java.awt.Color(255, 255, 255));
         jLbPreco.setText("Preço:");
 
+        jBtnNovo.setBackground(new java.awt.Color(0, 0, 0));
+        jBtnNovo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnNovo.setText("Novo cadastro");
+
         jBtnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
         jBtnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jBtnCadastrar.setText("Cadastrar");
+        jBtnCadastrar.setText("Salvar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -85,19 +102,21 @@ public class VisaoItem extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLblNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLbPreco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jBtnCadastrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtnNovo))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLblNome)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLbPreco)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(30, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jBtnCadastrar))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +130,9 @@ public class VisaoItem extends javax.swing.JFrame {
                     .addComponent(jLbPreco)
                     .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(jBtnCadastrar))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnCadastrar)
+                    .addComponent(jBtnNovo)))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -296,43 +317,13 @@ public class VisaoItem extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisaoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisaoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisaoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisaoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisaoItem().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCadastrar;
     private javax.swing.JButton jBtnEditar;
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnFiltrar;
+    private javax.swing.JButton jBtnNovo;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLbPreco;
     private javax.swing.JLabel jLblNome;
@@ -350,6 +341,58 @@ public class VisaoItem extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtPreco;
     private javax.swing.JTextField jTxtPrecoFiltro;
     // End of variables declaration//GEN-END:variables
+
+    public void getItem(Item item) {
+
+        String nome = jTxtNome.getText().equals("") ? null : jTxtNome.getText();
+        Double preco = jTxtPreco.getText().equals("") ? null : Double.parseDouble(jTxtPreco.getText());
+
+        item.setNome(nome);
+        item.setPreco(preco);
+    }
+
+    public void setItem(Item item) {
+        if (item == null) {
+            jTxtNome.setText("");
+            jTxtPreco.setText("");
+        } else {
+            jTxtNome.setText(item.getNome());
+            jTxtPreco.setText(String.valueOf(item.getPreco()));
+        }
+    }
+
+    public String getFiltroNome() {
+        if (jTxtNomeFiltro.getText().equals("")) {
+            return null;
+        } else {
+            return jTxtNomeFiltro.getText();
+        }
+    }
+    
+    public Double getFiltroPreco() {
+        if (jTxtPrecoFiltro.getText().equals("")) {
+            return null;
+        } else {
+            return Double.parseDouble(jTxtPrecoFiltro.getText());
+        }
+    }
+    
+    
+     public void listar(List<Item> lista) {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTableItem.getModel();
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
+        int cont = 0;
+
+        for (Item c : lista) {
+            modelo.insertRow(cont++, new Object[]{c.getNome(), c.getPreco()});
+        }
+    }
+    
 
     public javax.swing.JButton getjBtnCadastrar() {
         return jBtnCadastrar;
@@ -390,4 +433,10 @@ public class VisaoItem extends javax.swing.JFrame {
     public javax.swing.JTextField getjTxtPrecoFiltro() {
         return jTxtPrecoFiltro;
     }
+
+    public JButton getjBtnNovo() {
+        return jBtnNovo;
+    }
+    
+    
 }

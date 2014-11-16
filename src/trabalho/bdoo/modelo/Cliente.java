@@ -35,6 +35,12 @@ public class Cliente implements Serializable{
     public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+    
     
     
 }
