@@ -33,7 +33,7 @@ public class ControladorPedido implements ActionListener {
     private List<Cliente> listaCliente;
     private List<Item> listaItem;
     private PedidoDao pedidoDao;
-    private Cliente filtroCliente;
+    private String filtroCliente;
     private Double filtroTotal;
 
     public ControladorPedido() {
@@ -191,8 +191,8 @@ public class ControladorPedido implements ActionListener {
     }
 
     private void listar() {
-        filtroCliente = null;
-        filtroTotal = null;
+        filtroCliente = visaoPedido.getFiltroCliente();
+        filtroTotal = visaoPedido.getFiltroTotal();
         try {
             listaPedido = pedidoDao.buscarTodos(filtroCliente, filtroTotal);
             visaoPedido.listarPedido(listaPedido);

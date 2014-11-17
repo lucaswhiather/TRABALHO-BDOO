@@ -64,6 +64,7 @@ public class ControladorCliente implements ActionListener {
     
     public void novo(){
         cliente = new Cliente();
+        visaoCliente.setCliente(cliente);
     }
 
     private void salvar() {
@@ -104,8 +105,7 @@ public class ControladorCliente implements ActionListener {
                 System.out.println("nome = "+cliente.getNome());
                 System.out.println("telefone = "+cliente.getTelefone());
                 clienteDao.excluir(cliente);
-                cliente = new Cliente();
-                visaoCliente.setCliente(cliente);
+                novo();
                 listar();
                 visaoCliente.apresentarMensagem("Cliente excluido com sucesso.");
             } else {

@@ -23,12 +23,12 @@ public class PedidoDao extends GenericDao<Pedido>{
     public PedidoDao(ObjectContainer db) {
         this.db = db;
     }
-    public List<Pedido> buscarTodos(final Cliente cliente, final Double total){
+    public List<Pedido> buscarTodos(final String cliente, final Double total){
         ObjectSet<Pedido> lista = db.query(new Predicate<Pedido>() {
 
             public boolean match(Pedido pedido) {
 
-                if (cliente != null && !pedido.getCliente().equals(cliente)) {
+                if (cliente != null && !pedido.getCliente().getNome().startsWith(cliente)) {
                     return false;
                 }
 
