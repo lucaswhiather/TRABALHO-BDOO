@@ -45,19 +45,20 @@ public class VisaoPrincipal extends javax.swing.JFrame {
 
         jBtnItem.setBackground(new java.awt.Color(0, 0, 0));
         jBtnItem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnItem.setForeground(new java.awt.Color(255, 255, 255));
         jBtnItem.setText("Item");
 
         jBtnPedido.setBackground(new java.awt.Color(0, 0, 0));
         jBtnPedido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnPedido.setForeground(new java.awt.Color(255, 255, 255));
         jBtnPedido.setText("Pedido");
-        jBtnPedido.setMaximumSize(new java.awt.Dimension(85, 31));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabelTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Principal");
@@ -82,6 +83,7 @@ public class VisaoPrincipal extends javax.swing.JFrame {
 
         jBtnCliente.setBackground(new java.awt.Color(0, 0, 0));
         jBtnCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnCliente.setForeground(new java.awt.Color(255, 255, 255));
         jBtnCliente.setText("Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -93,7 +95,7 @@ public class VisaoPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnPedido)
                     .addComponent(jBtnCliente)
                     .addComponent(jBtnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,7 +106,7 @@ public class VisaoPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jBtnPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnPedido)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnCliente)
                         .addGap(18, 18, 18)

@@ -90,10 +90,12 @@ public class VisaoItem extends javax.swing.JFrame {
 
         jBtnNovo.setBackground(new java.awt.Color(0, 0, 0));
         jBtnNovo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnNovo.setForeground(new java.awt.Color(255, 255, 255));
         jBtnNovo.setText("Novo cadastro");
 
         jBtnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
         jBtnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnCadastrar.setText("Salvar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -189,16 +191,19 @@ public class VisaoItem extends javax.swing.JFrame {
 
         jBtnEditar.setBackground(new java.awt.Color(0, 0, 0));
         jBtnEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnEditar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnEditar.setText("Editar");
 
         jBtnExcluir.setBackground(new java.awt.Color(0, 0, 0));
         jBtnExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         jBtnExcluir.setText("Excluir");
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Filtro de Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.white));
 
         jBtnFiltrar.setBackground(new java.awt.Color(0, 0, 0));
+        jBtnFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         jBtnFiltrar.setText("Filtrar");
 
         jLblNomeFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
