@@ -16,7 +16,7 @@ import java.util.List;
 public class Pedido implements Serializable{
 
     private Cliente cliente;
-    private List<ItemPedido> itenspedido;
+    private List<Item> itens;
     
     public Pedido() {
     }
@@ -29,21 +29,24 @@ public class Pedido implements Serializable{
         this.cliente = cliente;
     }
 
-    public List<ItemPedido> getItenspedido() {
-        return itenspedido;
+    public List<Item> getItens() {
+        return itens;
     }
 
-    public void setItenspedido(List<ItemPedido> itenspedido) {
-        this.itenspedido = itenspedido;
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
     
+    
+
+
     public Double getTotal(){
         Double soma = 0.0;
         
-        if(itenspedido==null) return soma;
+        if(itens==null) return soma;
         
-        for(ItemPedido it: itenspedido){
-            soma += it.getItem().getPreco();
+        for(Item it: itens){
+            soma += it.getPreco();
         }
         return soma;
     }

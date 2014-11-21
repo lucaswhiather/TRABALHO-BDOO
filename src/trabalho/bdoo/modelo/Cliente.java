@@ -14,8 +14,8 @@ import java.io.Serializable;
  */
 public class Cliente implements Serializable{
 
-    String nome;
-    Integer telefone;
+    private String nome;
+    private Integer telefone;
     
     public Cliente() {
     }

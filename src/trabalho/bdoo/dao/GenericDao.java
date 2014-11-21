@@ -43,11 +43,4 @@ public class GenericDao<T> {
         return db;
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        db.commit();
-        db.close();
-        super.finalize(); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

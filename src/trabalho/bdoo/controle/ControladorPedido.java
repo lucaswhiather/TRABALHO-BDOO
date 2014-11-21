@@ -17,7 +17,6 @@ import trabalho.bdoo.dao.ItemDao;
 import trabalho.bdoo.dao.PedidoDao;
 import trabalho.bdoo.modelo.Cliente;
 import trabalho.bdoo.modelo.Item;
-import trabalho.bdoo.modelo.ItemPedido;
 import trabalho.bdoo.modelo.Pedido;
 import trabalho.bdoo.visao.VisaoPedido;
 
@@ -95,11 +94,8 @@ public class ControladorPedido implements ActionListener {
             return;
         }
 
-        ItemPedido itemPedido = new ItemPedido();
-        itemPedido.setPedido(pedido);
-        itemPedido.setItem(item);
-        pedido.getItenspedido().add(itemPedido);
-        visaoPedido.listarItemPedido(pedido.getItenspedido());
+        pedido.getItens().add(item);
+        visaoPedido.listarItemPedido(pedido.getItens());
     }
 
     public void removerItem() {
@@ -107,8 +103,8 @@ public class ControladorPedido implements ActionListener {
             int indice = visaoPedido.getjTableItem().getSelectedRow();
 
             if (indice >= 0) {
-                pedido.getItenspedido().remove(indice);
-                visaoPedido.listarItemPedido(pedido.getItenspedido());
+                pedido.getItens().remove(indice);
+                visaoPedido.listarItemPedido(pedido.getItens());
             } else {
                 visaoPedido.apresentarMensagem("Selecione um item.");
             }
@@ -127,13 +123,14 @@ public class ControladorPedido implements ActionListener {
             return;
         }
 
-        if (pedido.getItenspedido().isEmpty()) {
+        if (pedido.getItens().isEmpty()) {
             visaoPedido.apresentarMensagem("No mínimo um item no pedido.");
             return;
         }
 
         try {
             pedido.setCliente(cliente);
+            
             pedidoDao.salvar(pedido);
             listar();
             visaoPedido.apresentarMensagem("Pedido salvo com sucesso.");
@@ -151,7 +148,7 @@ public class ControladorPedido implements ActionListener {
                 pedido = listaPedido.get(indice);
                 
                 visaoPedido.getjCmbBoxCliente().setSelectedItem(pedido.getCliente());
-                visaoPedido.listarItemPedido(pedido.getItenspedido());
+                visaoPedido.listarItemPedido(pedido.getItens());
                 
                 
             } else {
@@ -186,8 +183,8 @@ public class ControladorPedido implements ActionListener {
 
     private void novo() {
         pedido = new Pedido();
-        pedido.setItenspedido(new ArrayList<ItemPedido>());
-        visaoPedido.listarItemPedido(pedido.getItenspedido());
+        pedido.setItens(new ArrayList<Item>());
+        visaoPedido.listarItemPedido(pedido.getItens());
     }
 
     private void listar() {

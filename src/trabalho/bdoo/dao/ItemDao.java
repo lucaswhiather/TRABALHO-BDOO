@@ -20,9 +20,8 @@ import trabalho.bdoo.modelo.Item;
 public class ItemDao extends GenericDao<Item> {
 
     public ItemDao(ObjectContainer db) {
-        this.db = db.ext().openSession();
+        this.db = db;
     }
-    
     
     public List<Item> buscarTodos(final String nome, final Double preco) {
         ObjectSet<Item> lista = db.query(new Predicate<Item>() {
@@ -49,5 +48,5 @@ public class ItemDao extends GenericDao<Item> {
         }
         return listaI;
     }
-
+    
 }

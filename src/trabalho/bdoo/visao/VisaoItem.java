@@ -362,7 +362,7 @@ public class VisaoItem extends javax.swing.JFrame {
             jTxtPreco.setText("");
         } else {
             jTxtNome.setText(item.getNome());
-            jTxtPreco.setText(String.valueOf(item.getPreco()));
+            jTxtPreco.setText(item.getPreco()==null ? "" : String.valueOf(item.getPreco()));
         }
     }
 

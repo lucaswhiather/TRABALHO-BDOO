@@ -14,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import trabalho.bdoo.modelo.Cliente;
 import trabalho.bdoo.modelo.Item;
-import trabalho.bdoo.modelo.ItemPedido;
 import trabalho.bdoo.modelo.Pedido;
 
 /**
@@ -408,7 +407,7 @@ public class VisaoPedido extends javax.swing.JFrame {
         }
     }
 
-    public void listarItemPedido(List<ItemPedido> lista) {
+    public void listarItemPedido(List<Item> lista) {
 
         DefaultTableModel modelo = (DefaultTableModel) jTableItem.getModel();
 
@@ -418,8 +417,8 @@ public class VisaoPedido extends javax.swing.JFrame {
 
         int cont = 0;
 
-        for (ItemPedido ip : lista) {
-            modelo.insertRow(cont++, new Object[]{ip.getItem().getNome(), ip.getItem().getPreco()});
+        for (Item i : lista) {
+            modelo.insertRow(cont++, new Object[]{i.getNome(), i.getPreco()});
         }
     }
 

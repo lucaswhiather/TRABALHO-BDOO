@@ -373,7 +373,7 @@ public class VisaoCliente extends javax.swing.JFrame {
             jTxtTelefone.setText("");
         } else {
             jTxtNome.setText(cliente.getNome());
-            jTxtTelefone.setText(String.valueOf(cliente.getTelefone()));
+            jTxtTelefone.setText(cliente.getTelefone()==null ? "" : String.valueOf(cliente.getTelefone()));
         }
     }
 
